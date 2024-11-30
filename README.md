@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This challenge is to create a Tableau notebook, complete with dashboards, visualizations, a story and analysis. The challenge is to use Citibike data to look for interesting phenomena and create an interactive and easy to follow presentation for everyone to follow. The analysis looks at when, for how long, and where rides are happening. Interesting phenomena of zero distance rides being most common, and extremely low New York City representation in the data, are examined.
+This challenge is to create a Tableau notebook, complete with dashboards, visualizations, a story and analysis. The challenge is to use Citibike data to look for interesting phenomena and create an interactive and easy to follow presentation for everyone to follow. The analysis looks at when, for how long, and where rides happen. Interesting phenomena of zero distance rides being most common, and extremely low New York City representation in the data, are examined.
 
 The Tableau Public workbook is located here: [link to Tableau Public](https://public.tableau.com/views/citibike_tableau_final/CitibikeStory?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
@@ -10,7 +10,7 @@ The Tableau Public workbook is located here: [link to Tableau Public](https://pu
 
 ## Data
 
-The data consists of many different files accumulated together. In its raw form this data consists of 3 CSV and 2 GeoJSON files. The CSV files are taken from an `s3` bucket of Citibike trip data (see References). The latest three files were selected to try and make the report the most relavent. The following shows the bottom of the page.
+The data consists of many different files accumulated together. In its raw form this data consists of 3 CSV and 2 GeoJSON files. The CSV files are taken from an `s3` bucket of Citibike trip data (see References). The latest three files were selected to try and make the report the most relevent. The following shows the bottom of the page.
 
 ![1732946498602](image/README/1732946498602.png)
 
@@ -40,31 +40,31 @@ Load the GeoJSON files into pandas DataFrames, then concatenate those DataFrames
 
 ![1732948020928](image/README/1732948020928.png)
 
-This was done to incorporate zipcode information (one of the requirements of the challenge) into the eventual Tableau presentation. It took an inordinate amount of time and it is likely that there was any easier way to get the same results. Finally one single CSV was created and the Zipcode information worked well for the Tooltip. However the `'geometry'` column was not working properly in Tableau. A desperate attempt to get the Zipcode boundary polygons into this dataset resulted in success. The combined GeoJSON file was joined to the fully merged CSV file in Tableau using a full outer join. This enabled to presentation to continue after many hours:
+This was done to incorporate zipcode information (one of the requirements of the challenge) into the eventual Tableau presentation. It took an inordinate amount of time, and it is likely that there was an easier way to get the same results. Finally, one single CSV was created and the Zipcode information worked well for the Tooltip. However, the `'geometry'` column was not working properly in Tableau. A desperate attempt to get the Zipcode boundary polygons into this dataset resulted in success. The combined GeoJSON file was joined to the fully merged CSV file in Tableau using a full outer join. This enabled the presentation to continue after many hours:
 
 ![1732948360657](image/README/1732948360657.png)
 
-Next the work of the actual Tableau presentation which involved examining the data and creating test visuals. First creating a map, then looking at ride distance and duration. Then examining the most popular areas for Citibike rides. This examination led to seeing interesting phenomena, namely a massive weight towards Jersey City and a strange 0 distance prevalence among rides.
+Next the work of the actual Tableau presentation involved examining the data and creating test visuals. First creating a map, then looking at ride distance and duration. Then examining the most popular areas for Citibike rides. This examination led to seeing interesting phenomena, namely a massive weight towards Jersey City and a strange 0 distance prevalence among rides.
 
 ## Results
 
-The Tableau presentation was instrumental in examining trends and interesting phenomena. The preprocessing was time consuming but, once complete Tableau offers a quick and intuitive way to plot data.
+The Tableau presentation was instrumental in examining trends and interesting phenomena. The preprocessing was time consuming but once complete Tableau offers a quick and intuitive way to plot data.
 
-The first interesting phenomena was discovering that the most common distance for rides was 0km. The calculated field for distance looked at the the distance between the start location and end location. However, if you were to return the bike to the same place you got it, it would register 0km no matter how far you pedalled. This phenomena was confirmed by looking at the most popular state, zipcodes, and stations for rides in the dataset.
+The first interesting phenomena was discovering that the most common distance for rides was 0km. The calculated field for distance looked at the distance between the start location and end location. However, if you were to return the bike to the same place you got it, it would register 0km no matter how far you pedaled. This phenomenon was confirmed by looking at the most popular state, zipcodes, and stations for rides in the dataset.
 
 ![1732949255065](image/README/1732949255065.png)![1732949312760](image/README/1732949312760.png)
 
-The second interesting phenomena was solved in writing this README. While revisiting the file names and location, it was observed that all the CSV files downloaded from Citibike started with the letters JC (e.g. [JC-202410-citibike-tripdata.csv.zip](https://s3.amazonaws.com/tripdata/JC-202410-citibike-tripdata.csv.zip)). This likely refers to Jersey City data and explains perfectly why New York City was so under represented in the dataset. It is an oversight by this analysis that the result took this long to recognize.  Further investigation of the data on the `s3` bucket site would likely have unearther this problem earlier in the analysis.
+The second interesting phenomena was solved in writing this README. While revisiting the file names and location, it was observed that all the CSV files downloaded from Citibike started with the letters JC (e.g. [JC-202410-citibike-tripdata.csv.zip](https://s3.amazonaws.com/tripdata/JC-202410-citibike-tripdata.csv.zip)). This likely refers to Jersey City data and explains perfectly why New York City was so underrepresented in the dataset. It is an oversight by this analysis that the result took this long to recognize.  Further investigation of the data on the `s3` bucket site would likely have unearthed this problem earlier in the analysis.
 
 The Tableau workbook is then published to Tableau Public, and a copy of the workbook is saved to this repo.
 
 ## Conclusion
 
-Tableau is a powerful tool for creating visuals, dashboards, stories, and analysis. The Citibike data was easily (once preprocessed) used to create insightful visual analysis. Recommendations for Citibike could be to use GPS trackers on their bikes to measure the distance of rides. This could help assess maintenance and safety related issues with the bikes themselves. Also they might consider combining all their data into a single file instead of dividing it between Jersey City and New York.
+Tableau is a powerful tool for creating visuals, dashboards, stories, and analysis. The Citibike data was easily (once preprocessed) used to create insightful visual analysis. Recommendations for Citibike could be to use GPS trackers on their bikes to measure the distance of rides. This could help assess maintenance and safety related issues with the bikes themselves. Also, they might consider combining all their data into a single file instead of dividing it between Jersey City and New York.
 
-Careful consideration is imperative in the initial stages of analysis. Basically be careful to see what data you are using. During this analysis a file that was likely labeled to show it was from New Jersey was overlooked. It was presumed that the data from Citibike was for the entire Citibike data when in fact it had been divided. Spending more time analyzing many samples of data from the `s3` bucket would have helped start the analysis on better footing. This oversight was a limitation that led to hours of confusion and testing.
+Careful consideration is imperative in the initial stages of analysis. Basically, be careful to see what data you are using. During this analysis a file that was likely labeled to show it was from New Jersey was overlooked. It was presumed that the data from Citibike was for the entire Citibike data when in fact it had been divided. Spending more time analyzing many samples of data from the `s3` bucket would have helped start the analysis on better footing. This oversight was a limitation that led to hours of confusion and testing.
 
-Citibike has a lot of traffic in New Jersey. In the last three months on record (Aug, Sept, Oct) there have been over 340,000 rides. Each month had over 100,000 rides. It seems a lot of the traffic comes from tourism: people pick up a bike at Hoboken Terminal then return back at the same place, suggesting they arrive by public transit; i.e. they are not local. Citibike could look into making membership easier for tourists and guest to New Jersey.
+Citibike has a lot of traffic in New Jersey. In the last three months on record (Aug, Sept, Oct) there have been over 340,000 rides. Each month had over 100,000 rides. It seems a lot of the traffic comes from tourism: people pick up a bike at Hoboken Terminal then return back to the same place, suggesting they arrive by public transit, i.e. they are not local. Citibike could look into making membership easier for tourists and guests to New Jersey.
 
 ## References
 
