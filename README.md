@@ -81,3 +81,7 @@ Class materials were used extensively for this assignment, as well as:
 ## Usage
 
 The Tableau workbook is published to Tableau Public and available here: [link to workbook](https://public.tableau.com/views/citibike_tableau_final/CitibikeStory?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
+Large files were removed from this repo. ![1732955539936](image/README/1732955539936.png)
+
+`citibike_merged.csv` was removed because it was too large.
