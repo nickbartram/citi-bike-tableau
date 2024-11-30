@@ -1,6 +1,6 @@
 # Citibike Story Written Analysis (Module 18 Challenge: citi-bike-tableau)
 
-The is a written analysis of a Tableau presentation. This written analysis mostly describes slides in a Tableau presentation, and a large amount of the written analysis here comes from those slides.  This written analysis is complimentary to the Tableau Public workbook accessed here: [link to workbook](https://public.tableau.com/views/citibike_tableau_final/CitibikeStory?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+The is a written analysis of a Tableau presentation. This written analysis mostly describes slides in a Tableau presentation, and a large amount of the written analysis here comes from those slides.  This written analysis is complimentary to the Tableau Public workbook accessed here: [link to Tableau Public](https://public.tableau.com/views/citibike_tableau_final/CitibikeStory?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 ## **The Map with Everything**:
 
@@ -60,4 +60,4 @@ Third:
 
 - Limitations in data entry (Citibike issue) or loading (issue with process of this analysis). These three months were chosen because they crossed seasons and were very recent. It possible a mistake was made while downloading or processing the data. Repeated testing has shown that the data was loaded properly.  A file being overwritten in data entry, perhaps a faulty join, could have happened on Citibike's end. If a dataset from Hoboken did an improper join with a dataset from New York City, it might look like the data in the visualizations we have seen so far.
 
-Ulitmately, it's clear what's happening here. The files that were used for this analysis were specifically from the Jersey City area. The file names all start with JC(e.g. [JC-202410-citibike-tripdata.csv.zip](https://s3.amazonaws.com/tripdata/JC-202410-citibike-tripdata.csv.zip)), but only at the end of all this work do I see what that means. I terrible oversight, but it at least explains the weight towards Jersey City.
+Ulitmately, it's clear what's happening here. The files that were used for this analysis were specifically from the Jersey City area. The file names all start with JC(e.g. [JC-202410-citibike-tripdata.csv.zip](https://s3.amazonaws.com/tripdata/JC-202410-citibike-tripdata.csv.zip)), but only at the end of all this work do I see what that means. A terrible oversight, but it at least explains the weight towards Jersey City.

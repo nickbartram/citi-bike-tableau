@@ -86,7 +86,7 @@ The Tableau workbook is published to Tableau Public and available here: [link to
 
 ![1732955539936](https://file+.vscode-resource.vscode-cdn.net/c%3A/Users/nbart.DESKTOP-3OF7M8N/Desktop/Data%20Analysis%20Class%20Materials/class_assignments/citi-bike-tableau/image/README/1732955539936.png)
 
-The full merged CSV file (`citibike_merged.csv`) has been removed from the repo, because it is too large. It is not recommended but the  `citibike_merged.csv` is available for download from Google Drive [here.](https://drive.google.com/file/d/1AkY6IFr6CI28jfv-vqJWURg8jyrD27gc/view?usp=sharing) It is not required to download because everything is already here:
+The full merged CSV file (`citibike_merged.csv`) has been removed from the repo, because it is too large. It is not recommended but the  `citibike_merged.csv` is available for download from Google Drive upon request. This is also the case for `citibike_NYNJ.geojson`. Neither are required to download because everything is already available here:
 
 - A snapshot of the entire Citibike workbook on [Tableau Public](https://public.tableau.com/views/citibike_tableau_final/CitibikeStory?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link).
 - A detailed step-by-step analysis in the full [Report](Report.md).
