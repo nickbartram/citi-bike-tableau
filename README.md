@@ -2,7 +2,9 @@
 
 ## Introduction
 
-This challenge is to create a Tableau story, complete with dashboards, visualizations, and analysis. The challenge is to use Citibike data to look for interesting phenomena and create an interactive and easy to follow presentation for everyone to follow. The analysis looks at when, for how long, and where rides are happening. Interesting phenomena of zero distance rides being most common, and extremely low New York City representation in the data, are examined.
+This challenge is to create a Tableau notebook, complete with dashboards, visualizations, a story and analysis. The challenge is to use Citibike data to look for interesting phenomena and create an interactive and easy to follow presentation for everyone to follow. The analysis looks at when, for how long, and where rides are happening. Interesting phenomena of zero distance rides being most common, and extremely low New York City representation in the data, are examined.
+
+The Tableau Public workbook is located here: [link to workbook](https://public.tableau.com/views/citibike_tableau_final/CitibikeStory?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
 
 ![1732947201158](image/README/1732947201158.png)
 
@@ -44,10 +46,9 @@ This was done to incorporate zipcode information (one of the requirements of the
 
 Next the work of the actual Tableau presentation which involved examining the data and creating test visuals. First creating a map, then looking at ride distance and duration. Then examining the most popular areas for Citibike rides. This examination led to seeing interesting phenomena, namely a massive weight towards Jersey City and a strange 0 distance prevalence among rides.
 
-
 ## Results
 
-The Tableau presentation was instrumental in examining trends and interesting phenomena. The preprocessing was time consuming but, once complete Tableau offers a quick and intuitive way to plot data. 
+The Tableau presentation was instrumental in examining trends and interesting phenomena. The preprocessing was time consuming but, once complete Tableau offers a quick and intuitive way to plot data.
 
 The first interesting phenomena was discovering that the most common distance for rides was 0km. The calculated field for distance looked at the the distance between the start location and end location. However, if you were to return the bike to the same place you got it, it would register 0km no matter how far you pedalled. This phenomena was confirmed by looking at the most popular state, zipcodes, and stations for rides in the dataset.
 
@@ -59,7 +60,7 @@ The Tableau workbook is then published to Tableau Public, and a copy of the work
 
 ## Conclusion
 
-Tableau is a powerful tool for creating visuals, dashboards, stories, and analysis. The Citibike data was easily (once preprocessed) used to create insightful visual analysis. Recommendations for Citibike could be to use GPS trackers on their bikes to measure the distance of rides. This could help assess maintenance and safety related issues with the bikes themselves. Also they might consider combining all their data into a single file instead of dividing it between Jersey City and New York. 
+Tableau is a powerful tool for creating visuals, dashboards, stories, and analysis. The Citibike data was easily (once preprocessed) used to create insightful visual analysis. Recommendations for Citibike could be to use GPS trackers on their bikes to measure the distance of rides. This could help assess maintenance and safety related issues with the bikes themselves. Also they might consider combining all their data into a single file instead of dividing it between Jersey City and New York.
 
 Careful consideration is imperative in the initial stages of analysis. Basically be careful to see what data you are using. During this analysis a file that was likely labeled to show it was from New Jersey was overlooked. It was presumed that the data from Citibike was for the entire Citibike data when in fact it had been divided. Spending more time analyzing many samples of data from the `s3` bucket would have helped start the analysis on better footing. This oversight was a limitation that led to hours of confusion and testing.
 
@@ -75,7 +76,8 @@ Class materials were used extensively for this assignment, as well as:
 * https://s3.amazonaws.com/tripdata/index.html
 * https://github.com/OpenDataDE/State-zip-code-GeoJSON
 * https://mapshaper.org/
+* https://public.tableau.com/views/citibike_tableau_final/CitibikeStory?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link
 
 ## Usage
 
-The Tableau workbook is published to Tableau Public and available here:
+The Tableau workbook is published to Tableau Public and available here: [link to workbook](https://public.tableau.com/views/citibike_tableau_final/CitibikeStory?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
