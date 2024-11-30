@@ -1,0 +1,1979 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20243.24.1010.1014                               -->
+<workbook original-version='18.1' source-build='2024.3.0 (20243.24.1010.1014)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AnimationOnByDefault />
+    <MapboxVectorStylesAndLayers />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <SpatialFileLayer />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='combined_citibike_data.csv+ (Multiple Connections)' inline='true' name='federated.1ef9wvo1m9zsfp16hpg6o03fd76b' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='combined_citibike_data' name='textscan.035tv4v0rm1kqo13o7pvj1f6jkyr'>
+            <connection class='textscan' directory='C:/Users/nbart.DESKTOP-3OF7M8N/Desktop/Data Analysis Class Materials/class_assignments/citi-bike-tableau/Resources' filename='combined_citibike_data.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='nyc_cut' name='ogrdirect.0hjlebh1iu5cb31fyed1x0xovyso'>
+            <connection class='ogrdirect' directory='C:/Users/nbart.DESKTOP-3OF7M8N/Desktop/Data Analysis Class Materials/class_assignments/citi-bike-tableau/Resources' filename='nyc_cut.json' password='' server='' tablename='' />
+          </named-connection>
+          <named-connection caption='nj_cut' name='ogrdirect.0fccb1f06dmv9z12skhcc1r18vn0'>
+            <connection class='ogrdirect' directory='C:/Users/nbart.DESKTOP-3OF7M8N/Desktop/Data Analysis Class Materials/class_assignments/citi-bike-tableau/Resources' filename='nj_cut.json' password='' server='' tablename='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[nyc_cut.json].[ALAND10]' />
+              <expression op='[nj_cut.json].[ALAND10]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='Intersects'>
+                <expression op='MAKEPOINT([combined_citibike_data.csv].[end_lat], [combined_citibike_data.csv].[end_lng])' />
+                <expression op='[nyc_cut.json].[Geometry]' />
+              </expression>
+            </clause>
+            <relation connection='textscan.035tv4v0rm1kqo13o7pvj1f6jkyr' name='combined_citibike_data.csv' table='[combined_citibike_data#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_CA' separator=','>
+                <column datatype='string' name='ride_id' ordinal='0' />
+                <column datatype='string' name='rideable_type' ordinal='1' />
+                <column datatype='datetime' name='started_at' ordinal='2' />
+                <column datatype='datetime' name='ended_at' ordinal='3' />
+                <column datatype='string' name='start_station_name' ordinal='4' />
+                <column datatype='string' name='start_station_id' ordinal='5' />
+                <column datatype='string' name='end_station_name' ordinal='6' />
+                <column datatype='string' name='end_station_id' ordinal='7' />
+                <column datatype='real' name='start_lat' ordinal='8' />
+                <column datatype='real' name='start_lng' ordinal='9' />
+                <column datatype='real' name='end_lat' ordinal='10' />
+                <column datatype='real' name='end_lng' ordinal='11' />
+                <column datatype='string' name='member_casual' ordinal='12' />
+              </columns>
+            </relation>
+            <relation connection='ogrdirect.0hjlebh1iu5cb31fyed1x0xovyso' name='nyc_cut.json' table='[nyc_cut.json]' type='table'>
+              <columns>
+                <column datatype='string' name='STATEFP10' ordinal='0' />
+                <column datatype='string' name='ZCTA5CE10' ordinal='1' />
+                <column datatype='string' name='GEOID10' ordinal='2' />
+                <column datatype='string' name='CLASSFP10' ordinal='3' />
+                <column datatype='string' name='MTFCC10' ordinal='4' />
+                <column datatype='string' name='FUNCSTAT10' ordinal='5' />
+                <column datatype='integer' name='ALAND10' ordinal='6' />
+                <column datatype='integer' name='AWATER10' ordinal='7' />
+                <column datatype='string' name='INTPTLAT10' ordinal='8' />
+                <column datatype='string' name='INTPTLON10' ordinal='9' />
+                <column datatype='string' name='PARTFLG10' ordinal='10' />
+                <column datatype='spatial' name='Geometry' ordinal='11' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='ogrdirect.0fccb1f06dmv9z12skhcc1r18vn0' name='nj_cut.json' table='[nj_cut.json]' type='table'>
+            <columns>
+              <column datatype='string' name='STATEFP10' ordinal='0' />
+              <column datatype='string' name='ZCTA5CE10' ordinal='1' />
+              <column datatype='string' name='GEOID10' ordinal='2' />
+              <column datatype='string' name='CLASSFP10' ordinal='3' />
+              <column datatype='string' name='MTFCC10' ordinal='4' />
+              <column datatype='string' name='FUNCSTAT10' ordinal='5' />
+              <column datatype='integer' name='ALAND10' ordinal='6' />
+              <column datatype='integer' name='AWATER10' ordinal='7' />
+              <column datatype='string' name='INTPTLAT10' ordinal='8' />
+              <column datatype='string' name='INTPTLON10' ordinal='9' />
+              <column datatype='string' name='PARTFLG10' ordinal='10' />
+              <column datatype='spatial' name='Geometry' ordinal='11' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[ALAND10 (nj_cut.json)]' value='[nj_cut.json].[ALAND10]' />
+          <map key='[ALAND10]' value='[nyc_cut.json].[ALAND10]' />
+          <map key='[AWATER10 (nj_cut.json)]' value='[nj_cut.json].[AWATER10]' />
+          <map key='[AWATER10]' value='[nyc_cut.json].[AWATER10]' />
+          <map key='[CLASSFP10 (nj_cut.json)]' value='[nj_cut.json].[CLASSFP10]' />
+          <map key='[CLASSFP10]' value='[nyc_cut.json].[CLASSFP10]' />
+          <map key='[FUNCSTAT10 (nj_cut.json)]' value='[nj_cut.json].[FUNCSTAT10]' />
+          <map key='[FUNCSTAT10]' value='[nyc_cut.json].[FUNCSTAT10]' />
+          <map key='[GEOID10 (nj_cut.json)]' value='[nj_cut.json].[GEOID10]' />
+          <map key='[GEOID10]' value='[nyc_cut.json].[GEOID10]' />
+          <map key='[Geometry (nj_cut.json)]' value='[nj_cut.json].[Geometry]' />
+          <map key='[Geometry]' value='[nyc_cut.json].[Geometry]' />
+          <map key='[INTPTLAT10 (nj_cut.json)]' value='[nj_cut.json].[INTPTLAT10]' />
+          <map key='[INTPTLAT10]' value='[nyc_cut.json].[INTPTLAT10]' />
+          <map key='[INTPTLON10 (nj_cut.json)]' value='[nj_cut.json].[INTPTLON10]' />
+          <map key='[INTPTLON10]' value='[nyc_cut.json].[INTPTLON10]' />
+          <map key='[MTFCC10 (nj_cut.json)]' value='[nj_cut.json].[MTFCC10]' />
+          <map key='[MTFCC10]' value='[nyc_cut.json].[MTFCC10]' />
+          <map key='[PARTFLG10 (nj_cut.json)]' value='[nj_cut.json].[PARTFLG10]' />
+          <map key='[PARTFLG10]' value='[nyc_cut.json].[PARTFLG10]' />
+          <map key='[STATEFP10 (nj_cut.json)]' value='[nj_cut.json].[STATEFP10]' />
+          <map key='[STATEFP10]' value='[nyc_cut.json].[STATEFP10]' />
+          <map key='[ZCTA5CE10 (nj_cut.json)]' value='[nj_cut.json].[ZCTA5CE10]' />
+          <map key='[ZCTA5CE10]' value='[nyc_cut.json].[ZCTA5CE10]' />
+          <map key='[end_lat]' value='[combined_citibike_data.csv].[end_lat]' />
+          <map key='[end_lng]' value='[combined_citibike_data.csv].[end_lng]' />
+          <map key='[end_station_id]' value='[combined_citibike_data.csv].[end_station_id]' />
+          <map key='[end_station_name]' value='[combined_citibike_data.csv].[end_station_name]' />
+          <map key='[ended_at]' value='[combined_citibike_data.csv].[ended_at]' />
+          <map key='[member_casual]' value='[combined_citibike_data.csv].[member_casual]' />
+          <map key='[ride_id]' value='[combined_citibike_data.csv].[ride_id]' />
+          <map key='[rideable_type]' value='[combined_citibike_data.csv].[rideable_type]' />
+          <map key='[start_lat]' value='[combined_citibike_data.csv].[start_lat]' />
+          <map key='[start_lng]' value='[combined_citibike_data.csv].[start_lng]' />
+          <map key='[start_station_id]' value='[combined_citibike_data.csv].[start_station_id]' />
+          <map key='[start_station_name]' value='[combined_citibike_data.csv].[start_station_name]' />
+          <map key='[started_at]' value='[combined_citibike_data.csv].[started_at]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_CA&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ride_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ride_id]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>ride_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>rideable_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[rideable_type]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>rideable_type</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>started_at</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[started_at]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>started_at</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ended_at</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[ended_at]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>ended_at</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>start_station_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[start_station_name]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>start_station_name</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>start_station_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[start_station_id]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>start_station_id</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>end_station_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[end_station_name]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>end_station_name</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>end_station_id</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[end_station_id]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>end_station_id</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>start_lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[start_lat]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>start_lat</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>start_lng</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[start_lng]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>start_lng</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>end_lat</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[end_lat]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>end_lat</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>end_lng</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[end_lng]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>end_lng</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>member_casual</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[member_casual]</local-name>
+            <parent-name>[combined_citibike_data.csv]</parent-name>
+            <remote-alias>member_casual</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>STATEFP10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[STATEFP10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>STATEFP10</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ZCTA5CE10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ZCTA5CE10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>ZCTA5CE10</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>GEOID10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[GEOID10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>GEOID10</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CLASSFP10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CLASSFP10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>CLASSFP10</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MTFCC10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[MTFCC10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>MTFCC10</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FUNCSTAT10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[FUNCSTAT10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>FUNCSTAT10</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ALAND10</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ALAND10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>ALAND10</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AWATER10</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[AWATER10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>AWATER10</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>INTPTLAT10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[INTPTLAT10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>INTPTLAT10</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>INTPTLON10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[INTPTLON10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>INTPTLON10</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PARTFLG10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[PARTFLG10]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>PARTFLG10</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry]</local-name>
+            <parent-name>[nyc_cut.json]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>STATEFP10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[STATEFP10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>STATEFP10</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ZCTA5CE10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ZCTA5CE10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>ZCTA5CE10</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>GEOID10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[GEOID10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>GEOID10</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>CLASSFP10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[CLASSFP10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>CLASSFP10</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>MTFCC10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[MTFCC10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>MTFCC10</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>FUNCSTAT10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[FUNCSTAT10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>FUNCSTAT10</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ALAND10</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[ALAND10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>ALAND10</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>AWATER10</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[AWATER10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>AWATER10</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>INTPTLAT10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[INTPTLAT10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>INTPTLAT10</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>INTPTLON10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[INTPTLON10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>INTPTLON10</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>PARTFLG10</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[PARTFLG10 (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>PARTFLG10</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='binary' />
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Geometry</remote-name>
+            <remote-type>8</remote-type>
+            <local-name>[Geometry (nj_cut.json)]</local-name>
+            <parent-name>[nj_cut.json]</parent-name>
+            <remote-alias>Geometry</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>spatial</local-type>
+            <aggregation>Collect</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='ALAND10 (nj cut.json)' datatype='integer' name='[ALAND10 (nj_cut.json)]' role='measure' type='quantitative' />
+      <column caption='Aland10' datatype='integer' name='[ALAND10]' role='measure' type='quantitative' />
+      <column caption='AWATER10 (nj cut.json)' datatype='integer' name='[AWATER10 (nj_cut.json)]' role='measure' type='quantitative' />
+      <column caption='Awater10' datatype='integer' name='[AWATER10]' role='measure' type='quantitative' />
+      <column caption='CLASSFP10 (nj cut.json)' datatype='string' name='[CLASSFP10 (nj_cut.json)]' role='dimension' type='nominal' />
+      <column caption='Classfp10' datatype='string' name='[CLASSFP10]' role='dimension' type='nominal' />
+      <column caption='End Location' datatype='spatial' name='[Calculation_3020789469775769606]' role='measure' type='nominal'>
+        <calculation class='tableau' formula='MAKEPOINT([end_lat], [end_lng])' />
+      </column>
+      <column caption='FUNCSTAT10 (nj cut.json)' datatype='string' name='[FUNCSTAT10 (nj_cut.json)]' role='dimension' type='nominal' />
+      <column caption='Funcstat10' datatype='string' name='[FUNCSTAT10]' role='dimension' type='nominal' />
+      <column caption='GEOID10 (nj cut.json)' datatype='string' name='[GEOID10 (nj_cut.json)]' role='dimension' type='nominal' />
+      <column caption='Geoid10' datatype='string' name='[GEOID10]' role='dimension' type='nominal' />
+      <column caption='Geometry (nj cut.json)' datatype='spatial' name='[Geometry (nj_cut.json)]' role='measure' type='nominal' />
+      <column caption='INTPTLAT10 (nj cut.json)' datatype='string' name='[INTPTLAT10 (nj_cut.json)]' role='dimension' type='nominal' />
+      <column caption='Intptlat10' datatype='string' name='[INTPTLAT10]' role='dimension' type='nominal' />
+      <column caption='INTPTLON10 (nj cut.json)' datatype='string' name='[INTPTLON10 (nj_cut.json)]' role='dimension' type='nominal' />
+      <column caption='Intptlon10' datatype='string' name='[INTPTLON10]' role='dimension' type='nominal' />
+      <column caption='MTFCC10 (nj cut.json)' datatype='string' name='[MTFCC10 (nj_cut.json)]' role='dimension' type='nominal' />
+      <column caption='Mtfcc10' datatype='string' name='[MTFCC10]' role='dimension' type='nominal' />
+      <column caption='PARTFLG10 (nj cut.json)' datatype='string' name='[PARTFLG10 (nj_cut.json)]' role='dimension' type='nominal' />
+      <column caption='Partflg10' datatype='string' name='[PARTFLG10]' role='dimension' type='nominal' />
+      <column caption='STATEFP10 (nj cut.json)' datatype='string' name='[STATEFP10 (nj_cut.json)]' role='dimension' type='nominal' />
+      <column caption='Statefp10' datatype='string' name='[STATEFP10]' role='dimension' type='nominal' />
+      <column caption='ZCTA5CE10 (nj cut.json)' datatype='string' name='[ZCTA5CE10 (nj_cut.json)]' role='dimension' type='nominal' />
+      <column caption='Zipcode_NY' datatype='string' name='[ZCTA5CE10]' role='dimension' semantic-role='[ZipCode].[Name]' type='nominal' />
+      <column caption='combined_citibike_data.csv' datatype='table' name='[__tableau_internal_object_id__].[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]' role='measure' type='quantitative' />
+      <column aggregation='Avg' caption='End_Lat' datatype='real' name='[end_lat]' role='dimension' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' caption='End Lng' datatype='real' name='[end_lng]' role='dimension' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column caption='End Station Id' datatype='string' name='[end_station_id]' role='dimension' type='nominal' />
+      <column caption='End Station Name' datatype='string' name='[end_station_name]' role='dimension' type='nominal' />
+      <column caption='Ended At' datatype='datetime' name='[ended_at]' role='dimension' type='ordinal' />
+      <column caption='Member Casual' datatype='string' name='[member_casual]' role='dimension' type='nominal' />
+      <column caption='Ride Id' datatype='string' name='[ride_id]' role='dimension' type='nominal' />
+      <column caption='Rideable Type' datatype='string' name='[rideable_type]' role='dimension' type='nominal' />
+      <column aggregation='Avg' caption='Start Lat' datatype='real' name='[start_lat]' role='dimension' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column aggregation='Avg' caption='Start Lng' datatype='real' name='[start_lng]' role='dimension' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+      <column caption='Start Station Id' datatype='string' name='[start_station_id]' role='dimension' type='nominal' />
+      <column caption='Start Station Name' datatype='string' name='[start_station_name]' role='dimension' type='nominal' />
+      <column caption='Started At' datatype='datetime' name='[started_at]' role='dimension' type='ordinal' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='C:/Users/NBART~1.DES/AppData/Local/Temp/TableauTemp/#TableauTemp_1h5u1f01o43b1o11zkrr015ixslm.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='11/29/2024 09:24:33 AM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <cols>
+            <map key='[ALAND10 (nj_cut.json)]' value='[Extract].[ALAND10]' />
+            <map key='[ALAND10]' value='[Extract].[ALAND101]' />
+            <map key='[AWATER10 (nj_cut.json)]' value='[Extract].[AWATER10]' />
+            <map key='[AWATER10]' value='[Extract].[AWATER101]' />
+            <map key='[CLASSFP10 (nj_cut.json)]' value='[Extract].[CLASSFP10]' />
+            <map key='[CLASSFP10]' value='[Extract].[CLASSFP101]' />
+            <map key='[FUNCSTAT10 (nj_cut.json)]' value='[Extract].[FUNCSTAT10]' />
+            <map key='[FUNCSTAT10]' value='[Extract].[FUNCSTAT101]' />
+            <map key='[GEOID10 (nj_cut.json)]' value='[Extract].[GEOID10]' />
+            <map key='[GEOID10]' value='[Extract].[GEOID101]' />
+            <map key='[Geometry (nj_cut.json)]' value='[Extract].[Geometry]' />
+            <map key='[Geometry]' value='[Extract].[Geometry1]' />
+            <map key='[INTPTLAT10 (nj_cut.json)]' value='[Extract].[INTPTLAT10]' />
+            <map key='[INTPTLAT10]' value='[Extract].[INTPTLAT101]' />
+            <map key='[INTPTLON10 (nj_cut.json)]' value='[Extract].[INTPTLON10]' />
+            <map key='[INTPTLON10]' value='[Extract].[INTPTLON101]' />
+            <map key='[MTFCC10 (nj_cut.json)]' value='[Extract].[MTFCC10]' />
+            <map key='[MTFCC10]' value='[Extract].[MTFCC101]' />
+            <map key='[PARTFLG10 (nj_cut.json)]' value='[Extract].[PARTFLG10]' />
+            <map key='[PARTFLG10]' value='[Extract].[PARTFLG101]' />
+            <map key='[STATEFP10 (nj_cut.json)]' value='[Extract].[STATEFP10]' />
+            <map key='[STATEFP10]' value='[Extract].[STATEFP101]' />
+            <map key='[ZCTA5CE10 (nj_cut.json)]' value='[Extract].[ZCTA5CE10]' />
+            <map key='[ZCTA5CE10]' value='[Extract].[ZCTA5CE101]' />
+            <map key='[end_lat]' value='[Extract].[end_lat]' />
+            <map key='[end_lng]' value='[Extract].[end_lng]' />
+            <map key='[end_station_id]' value='[Extract].[end_station_id]' />
+            <map key='[end_station_name]' value='[Extract].[end_station_name]' />
+            <map key='[ended_at]' value='[Extract].[ended_at]' />
+            <map key='[member_casual]' value='[Extract].[member_casual]' />
+            <map key='[ride_id]' value='[Extract].[ride_id]' />
+            <map key='[rideable_type]' value='[Extract].[rideable_type]' />
+            <map key='[start_lat]' value='[Extract].[start_lat]' />
+            <map key='[start_lng]' value='[Extract].[start_lng]' />
+            <map key='[start_station_id]' value='[Extract].[start_station_id]' />
+            <map key='[start_station_name]' value='[Extract].[start_station_name]' />
+            <map key='[started_at]' value='[Extract].[started_at]' />
+          </cols>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>ride_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[ride_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ride_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>rideable_type</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[rideable_type]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>rideable_type</remote-alias>
+              <ordinal>1</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>started_at</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[started_at]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>started_at</remote-alias>
+              <ordinal>2</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ended_at</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[ended_at]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ended_at</remote-alias>
+              <ordinal>3</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>start_station_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[start_station_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>start_station_name</remote-alias>
+              <ordinal>4</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>start_station_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[start_station_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>start_station_id</remote-alias>
+              <ordinal>5</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>end_station_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[end_station_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>end_station_name</remote-alias>
+              <ordinal>6</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>end_station_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[end_station_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>end_station_id</remote-alias>
+              <ordinal>7</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>start_lat</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[start_lat]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>start_lat</remote-alias>
+              <ordinal>8</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>start_lng</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[start_lng]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>start_lng</remote-alias>
+              <ordinal>9</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>end_lat</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[end_lat]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>end_lat</remote-alias>
+              <ordinal>10</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>end_lng</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[end_lng]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>end_lng</remote-alias>
+              <ordinal>11</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>member_casual</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[member_casual]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>member_casual</remote-alias>
+              <ordinal>12</ordinal>
+              <family>combined_citibike_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RGB' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>STATEFP101</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[STATEFP10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>STATEFP101</remote-alias>
+              <ordinal>13</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ZCTA5CE101</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[ZCTA5CE10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ZCTA5CE101</remote-alias>
+              <ordinal>14</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>GEOID101</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[GEOID10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>GEOID101</remote-alias>
+              <ordinal>15</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>CLASSFP101</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[CLASSFP10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>CLASSFP101</remote-alias>
+              <ordinal>16</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MTFCC101</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[MTFCC10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MTFCC101</remote-alias>
+              <ordinal>17</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>FUNCSTAT101</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[FUNCSTAT10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>FUNCSTAT101</remote-alias>
+              <ordinal>18</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ALAND101</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[ALAND10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ALAND101</remote-alias>
+              <ordinal>19</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>AWATER101</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[AWATER10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>AWATER101</remote-alias>
+              <ordinal>20</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>INTPTLAT101</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[INTPTLAT10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>INTPTLAT101</remote-alias>
+              <ordinal>21</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>INTPTLON101</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[INTPTLON10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>INTPTLON101</remote-alias>
+              <ordinal>22</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>PARTFLG101</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[PARTFLG10]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>PARTFLG101</remote-alias>
+              <ordinal>23</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Geometry1</remote-name>
+              <remote-type>128</remote-type>
+              <local-name>[Geometry]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Geometry1</remote-alias>
+              <ordinal>24</ordinal>
+              <family>nyc_cut.json</family>
+              <local-type>spatial</local-type>
+              <aggregation>Collect</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>STATEFP10</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[STATEFP10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>STATEFP10</remote-alias>
+              <ordinal>25</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ZCTA5CE10</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[ZCTA5CE10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ZCTA5CE10</remote-alias>
+              <ordinal>26</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>GEOID10</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[GEOID10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>GEOID10</remote-alias>
+              <ordinal>27</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>CLASSFP10</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[CLASSFP10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>CLASSFP10</remote-alias>
+              <ordinal>28</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>MTFCC10</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[MTFCC10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>MTFCC10</remote-alias>
+              <ordinal>29</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>FUNCSTAT10</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[FUNCSTAT10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>FUNCSTAT10</remote-alias>
+              <ordinal>30</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>ALAND10</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[ALAND10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>ALAND10</remote-alias>
+              <ordinal>31</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>AWATER10</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[AWATER10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>AWATER10</remote-alias>
+              <ordinal>32</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>INTPTLAT10</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[INTPTLAT10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>INTPTLAT10</remote-alias>
+              <ordinal>33</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>INTPTLON10</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[INTPTLON10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>INTPTLON10</remote-alias>
+              <ordinal>34</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>PARTFLG10</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[PARTFLG10 (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>PARTFLG10</remote-alias>
+              <ordinal>35</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Geometry</remote-name>
+              <remote-type>128</remote-type>
+              <local-name>[Geometry (nj_cut.json)]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Geometry</remote-alias>
+              <ordinal>36</ordinal>
+              <family>nj_cut.json</family>
+              <local-type>spatial</local-type>
+              <aggregation>Collect</aggregation>
+              <approx-count>0</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Canada&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='combined_citibike_data.csv' id='combined_citibike_data.csv_E5418D470EC642D2ABDE9FCD9EC973B8'>
+            <properties context=''>
+              <relation join='inner' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[nyc_cut.json].[ALAND10]' />
+                    <expression op='[nj_cut.json].[ALAND10]' />
+                  </expression>
+                </clause>
+                <relation join='inner' type='join'>
+                  <clause type='join'>
+                    <expression op='Intersects'>
+                      <expression op='MAKEPOINT([combined_citibike_data.csv].[end_lat], [combined_citibike_data.csv].[end_lng])' />
+                      <expression op='[nyc_cut.json].[Geometry]' />
+                    </expression>
+                  </clause>
+                  <relation connection='textscan.035tv4v0rm1kqo13o7pvj1f6jkyr' name='combined_citibike_data.csv' table='[combined_citibike_data#csv]' type='table'>
+                    <columns character-set='UTF-8' header='yes' locale='en_CA' separator=','>
+                      <column datatype='string' name='ride_id' ordinal='0' />
+                      <column datatype='string' name='rideable_type' ordinal='1' />
+                      <column datatype='datetime' name='started_at' ordinal='2' />
+                      <column datatype='datetime' name='ended_at' ordinal='3' />
+                      <column datatype='string' name='start_station_name' ordinal='4' />
+                      <column datatype='string' name='start_station_id' ordinal='5' />
+                      <column datatype='string' name='end_station_name' ordinal='6' />
+                      <column datatype='string' name='end_station_id' ordinal='7' />
+                      <column datatype='real' name='start_lat' ordinal='8' />
+                      <column datatype='real' name='start_lng' ordinal='9' />
+                      <column datatype='real' name='end_lat' ordinal='10' />
+                      <column datatype='real' name='end_lng' ordinal='11' />
+                      <column datatype='string' name='member_casual' ordinal='12' />
+                    </columns>
+                  </relation>
+                  <relation connection='ogrdirect.0hjlebh1iu5cb31fyed1x0xovyso' name='nyc_cut.json' table='[nyc_cut.json]' type='table'>
+                    <columns>
+                      <column datatype='string' name='STATEFP10' ordinal='0' />
+                      <column datatype='string' name='ZCTA5CE10' ordinal='1' />
+                      <column datatype='string' name='GEOID10' ordinal='2' />
+                      <column datatype='string' name='CLASSFP10' ordinal='3' />
+                      <column datatype='string' name='MTFCC10' ordinal='4' />
+                      <column datatype='string' name='FUNCSTAT10' ordinal='5' />
+                      <column datatype='integer' name='ALAND10' ordinal='6' />
+                      <column datatype='integer' name='AWATER10' ordinal='7' />
+                      <column datatype='string' name='INTPTLAT10' ordinal='8' />
+                      <column datatype='string' name='INTPTLON10' ordinal='9' />
+                      <column datatype='string' name='PARTFLG10' ordinal='10' />
+                      <column datatype='spatial' name='Geometry' ordinal='11' />
+                    </columns>
+                  </relation>
+                </relation>
+                <relation connection='ogrdirect.0fccb1f06dmv9z12skhcc1r18vn0' name='nj_cut.json' table='[nj_cut.json]' type='table'>
+                  <columns>
+                    <column datatype='string' name='STATEFP10' ordinal='0' />
+                    <column datatype='string' name='ZCTA5CE10' ordinal='1' />
+                    <column datatype='string' name='GEOID10' ordinal='2' />
+                    <column datatype='string' name='CLASSFP10' ordinal='3' />
+                    <column datatype='string' name='MTFCC10' ordinal='4' />
+                    <column datatype='string' name='FUNCSTAT10' ordinal='5' />
+                    <column datatype='integer' name='ALAND10' ordinal='6' />
+                    <column datatype='integer' name='AWATER10' ordinal='7' />
+                    <column datatype='string' name='INTPTLAT10' ordinal='8' />
+                    <column datatype='string' name='INTPTLON10' ordinal='9' />
+                    <column datatype='string' name='PARTFLG10' ordinal='10' />
+                    <column datatype='spatial' name='Geometry' ordinal='11' />
+                  </columns>
+                </relation>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet name='Sheet 2'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{ABDA11D4-9CE5-49AB-BBC8-F2AC069EE04C}' />
+    </worksheet>
+    <worksheet name='Zipcodes End Locations'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='combined_citibike_data.csv+ (Multiple Connections)' name='federated.1ef9wvo1m9zsfp16hpg6o03fd76b' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.1ef9wvo1m9zsfp16hpg6o03fd76b'>
+            <column aggregation='Avg' caption='End_Lat' datatype='real' name='[end_lat]' role='dimension' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column aggregation='Avg' caption='End Lng' datatype='real' name='[end_lng]' role='dimension' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column-instance column='[end_lat]' derivation='None' name='[none:end_lat:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[end_lng]' derivation='None' name='[none:end_lng:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='21' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[none:end_lat:qk]</rows>
+        <cols>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[none:end_lng:qk]</cols>
+      </table>
+      <simple-id uuid='{11769B3F-3C86-4A12-BCD2-69F36C0E2A44}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Zipcodes End Locations'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[clct:Calculation_3020789469770772485:nk]</field>
+            <field>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[clct:Calculation_3020789469775769606:nk]</field>
+            <field>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[clct:Geometry (nj_cut.json):nk]</field>
+            <field>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[clct:Geometry:nk]</field>
+            <field>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[none:ZCTA5CE10 (nj_cut.json):nk]</field>
+            <field>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[none:ZCTA5CE10:nk]</field>
+            <field>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[none:end_lat:qk]</field>
+            <field>[federated.1ef9wvo1m9zsfp16hpg6o03fd76b].[none:end_lng:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{2AF5E204-FD50-43D1-8B5A-839517455215}' />
+    </window>
+    <window class='worksheet' name='Sheet 2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{05B87053-725D-4B16-93D6-B0D83A338B17}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 2' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+    <thumbnail height='192' name='Zipcodes End Locations' width='192'>
+      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
+      gSg/5/8H6yduOkDyDxcAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
